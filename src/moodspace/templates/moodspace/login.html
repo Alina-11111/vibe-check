@@ -1,0 +1,15 @@
+{% extends 'moodspace/base.html' %}
+
+{% block title %}Вход{% endblock %}
+{% block content %}
+
+    <h2>Войти</h2>
+    <form method = 'POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type = 'submit'>Войти</button>
+    </form>
+    
+    <a href="{% url 'register' %}">Нет аккаунта? Зерегистрируйтесь</a>
+
+    {% endblock %}
