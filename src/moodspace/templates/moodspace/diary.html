@@ -1,0 +1,43 @@
+{% extends 'moodspace/base.html' %}
+{% block title %}Дневник{% endblock %}
+{% block content %}
+
+    <h2>Мой дневник воспоминаний</h2>
+
+    <form method = 'GET'>
+        <label>Выбери дату:</label>
+
+        <input type="date" name="date">
+
+        <button type="submit">Найти</button>
+
+    </form>
+
+    <a href="{% url 'create_diary' %}">Новая запись</a>
+    
+    
+    {% for i in diaries %}
+
+    <div>
+        <p>{{ i.date_created }}</p>
+        <p>{{ i.text }}</p>
+
+        {% if i.image_user %}
+            <img src="{{ i.image_user.url}}" width='300'>
+        {% endif %}
+
+        <a href="{% url 'edit_diary' i.id %}">Редактировать</a>
+        
+        <form method="POST" action="{% url 'delete_diary' i.id%}">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+        </form>
+        
+    </div>
+
+    {% empty %}
+
+    <p>Пока ничего нет</p>
+
+    {% endfor %}
+{% endblock %}
