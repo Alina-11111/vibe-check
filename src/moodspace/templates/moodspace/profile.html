@@ -1,7 +1,86 @@
 {% extends 'moodspace/base.html' %}
-{% block title %}Дневник{% endblock %}
+{% load static %}
+{% block title %}Мой профиль{% endblock %}
 {% block content %}
 
     <h2>Мой профиль</h2>
+<p>
+    {{ request.user.username }}</p>
 
+<hr>
+<h3>Статистика настроений</h3>
+
+{% if statistic %}
+<ul>
+    {% for st in statistic %}
+    <li>
+        {{ st.vibe_user__vibe_name }} - {{ st.total }}
+    </li>
+    {% endfor %}
+</ul>
+{%  else %}
+<p>Пусто</p>
+{% endif %}
+<hr>
+<h3> Записей в дневнике: {{ diary_count }}</h3>
+<hr>
+
+
+<h3>Мои рекомендации</h3>
+
+<a href="?status=all">
+    <button {% if status == 'all' %} 
+    disabled
+    {% endif %}
+    >
+    Все
+</button>
+</a>
+
+<a href="?status=favorite">
+    <button {% if status == 'favorite' %} 
+    disabled
+    {% endif %}
+    >
+    Избранное
+</button>
+</a>
+
+<a href="?status=viewed">
+    <button {% if status == 'viewed' %} 
+    disabled
+    {% endif %}
+    >
+    Просмотрено
+</button>
+</a>
+
+<a href="?status=disliked">
+    <button {% if status == 'disliked' %} 
+    disabled
+    {% endif %}
+    >
+    Не понравилось
+</button>
+</a>
+
+<br><br>
+
+{% for i in recommendations %}
+
+<div>
+    <h4>{{ i.recommendation.get_type_rec_display }}</h4>
+
+    <img
+    src="{% static i.recommendation.image_rec %}"
+    alt="{{ i.recommendation.title }}"
+    width="100"
+    >
+<h4> {{ i.recommendation.title }}</h4>
+<p> {{ i.recommendation.description }}</p>
+<hr>
+</div>
+{% empty %}
+<p>Пока ничего нет</p>
+{% endfor %}
 {% endblock %}

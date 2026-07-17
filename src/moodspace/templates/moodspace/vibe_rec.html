@@ -1,0 +1,49 @@
+{% extends 'moodspace/base.html' %}
+
+{% load  static %}
+{% block title %}Рекомендации{% endblock %}
+{% block content %}
+
+    <h2>Вот</h2>
+
+<div> 
+
+    <form method="GET" action="{% url 'vibe_rec' vibe.id %}">
+        <button type="submit">Другая подборка</button>
+    </form>
+    {% for i in cards %}
+
+    <h3>{{ i.get_type_rec_display }}</h3>
+
+    <img
+            src="{% static i.image_rec %}"
+            alt="{{ i.title }}"
+            width="100"
+        >
+
+    <h4>{{ i.title }}</h4>
+
+    <p>{{ i.description }}</p>
+    <form method="POST" action="{% url 'add_status' i.id 'favorite' %}">
+         {% csrf_token %}
+        <button type="submit"> Избранное</button>
+    </form>
+    
+    <form method="POST" action="{% url 'add_status' i.id 'viewed' %}">
+         {% csrf_token %}
+        <button> Просмотрено</button>
+    </form>
+
+    <form method="POST" action="{% url 'add_status' i.id 'disliked' %}">
+         {% csrf_token %}
+        <button> Не понравилось</button>
+    </form>
+    
+</div>
+
+    {% empty %}
+    <p>Пока ничего нет</p>
+{% endfor %}
+
+
+{% endblock %}

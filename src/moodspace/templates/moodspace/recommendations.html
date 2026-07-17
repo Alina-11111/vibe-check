@@ -1,7 +1,31 @@
 {% extends 'moodspace/base.html' %}
+
+{% load  static %}
 {% block title %}Рекомендации{% endblock %}
 {% block content %}
 
-    <h2>Рекомендации</h2>
+    <h2>Какое у тебя настроение?</h2>
+
+    <div>
+    {% for i in vibes %}
+        <div>
+            <a href="{% url 'vibe_rec' i.id%}">
+
+                <img
+                src="{% static i.image_vibe %}"
+                alt="{{ i.vibe_name }}"
+                width="100"
+                >
+
+                <h3>{{ i.vibe_name }}</h3>
+            
+            </a>
+        </div>
+        
+        {% empty %}
+        <p>Пока ничего нет</p>
+
+    {% endfor %}
+    </div>
 
 {% endblock %}

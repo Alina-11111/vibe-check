@@ -37,8 +37,7 @@ class Diary(models.Model):
 class Vibe(models.Model):
     
     vibe_name = models.CharField('Название настроения', max_length=255)
-    image_vibe = models.ImageField('Стикер', upload_to='image_vibe/', blank=True, null=True )
-
+    image_vibe = models.CharField('Стикер', max_length=255, blank=True, null=True)
     class Meta:
         verbose_name = 'Настроение'
 
@@ -57,8 +56,8 @@ class Recommendation(models.Model):
     type_rec = models.CharField('Тип рекомендации', max_length=100, choices=RecommenationType.choices)
     title = models.CharField('Название', max_length=255)
     description = models.TextField('Описание')
-    image_rec = models.ImageField('Изображение рекомендации', upload_to='recommed_image/', blank=True, null=True)
-    vibe = models.ForeignKey(Vibe, null=True, on_delete=models.SET_NULL, related_name='recommendtations')
+    image_rec = models.CharField('Изображение рекомендации', blank=True, null=True)
+    vibe = models.ForeignKey(Vibe, null=True, on_delete=models.SET_NULL, related_name='recommendations')
 
     class Meta:
         verbose_name = 'Рекомендация'
