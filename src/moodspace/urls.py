@@ -1,5 +1,5 @@
 from django.urls import path
-from moodspace.views import home, registration, diary, recommendations, favorites, profile, create_diary, edit_diary, delete_diary, vibe_recommendation, remove_favorites, add_status
+from moodspace.views import home, registration, diary, recommendations, favorites, profile, create_diary, edit_diary, delete_diary, vibe_recommendation, remove_favorites, add_status, ReccomendationApi
 from django.contrib.auth import views as auth_views
  
 urlpatterns = [
@@ -15,7 +15,7 @@ urlpatterns = [
     path('edit_diary/<int:diary_id>/', edit_diary, name='edit_diary'),
     path('delete_diary/<int:diary_id>/', delete_diary, name='delete_diary'),
     path('vibe_rec/<int:vibe_id>/', vibe_recommendation, name='vibe_rec'),
-    #path('favorite/<int:recommendation_id>/', add_favorite, name='add_favorite'),
     path('favorites/remove/<int:recommendation_id>/', remove_favorites, name='remove_favorite'),
-    path('status/<int:recommendation_id>/<str:status>/', add_status, name='add_status' )
+    path('status/<int:recommendation_id>/<str:status>/', add_status, name='add_status' ),
+    path('api/recommendation/', ReccomendationApi.as_view(), name='api_recommendations'),
     ]

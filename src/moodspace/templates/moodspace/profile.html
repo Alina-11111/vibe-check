@@ -3,84 +3,108 @@
 {% block title %}Мой профиль{% endblock %}
 {% block content %}
 
-    <h2>Мой профиль</h2>
-<p>
-    {{ request.user.username }}</p>
+<h3 class="text-center mb-5">Мой профиль</h3>
 
-<hr>
-<h3>Статистика настроений</h3>
+<div class="card shadow-sm profile-card mb-4">
+    <div class="card-body text-center">
+        <h5>{{ request.user.username }}</h5>
+    </div>
 
-{% if statistic %}
-<ul>
-    {% for st in statistic %}
-    <li>
-        {{ st.vibe_user__vibe_name }} - {{ st.total }}
-    </li>
-    {% endfor %}
-</ul>
-{%  else %}
-<p>Пусто</p>
-{% endif %}
-<hr>
-<h3> Записей в дневнике: {{ diary_count }}</h3>
-<hr>
+</div>
+    
+<div class="card shadow-sm recommendation-card mb-4">
+    <div class="card-body">
+        <h4>Статистика настроения</h4>
+
+        {% if statistic %}
+
+        <ul class="list-group">
+            {% for st in statistic %}
+            <li class="list-group-item">
+                {{ st.vibe_user__vibe_name }} - {{ st.total }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {%  else %}
+        <p class="text-muted">Пусто</p>
+        {% endif %}
+    </div>
+</div>
 
 
-<h3>Мои рекомендации</h3>
 
-<a href="?status=all">
-    <button {% if status == 'all' %} 
-    disabled
-    {% endif %}
-    >
-    Все
-</button>
-</a>
+<div class="card shadow-sm recommendation-card mb-4">
+    <div class="card-body">
+        <h4> Записей в дневнике: {{ diary_count }}</h4>
+    </div>
+</div>
 
-<a href="?status=favorite">
-    <button {% if status == 'favorite' %} 
-    disabled
-    {% endif %}
-    >
-    Избранное
-</button>
-</a>
 
-<a href="?status=viewed">
-    <button {% if status == 'viewed' %} 
-    disabled
-    {% endif %}
-    >
-    Просмотрено
-</button>
-</a>
 
-<a href="?status=disliked">
-    <button {% if status == 'disliked' %} 
-    disabled
-    {% endif %}
-    >
-    Не понравилось
-</button>
-</a>
+<h4 class="text-center mb-4">Мои рекомендации</h4>
 
-<br><br>
+<div class="d-flex justify-content-center gap-2 flex-wrap mb-5">
+    <a href="?status=all">
+        <button class="btn btn-grey" {% if status == 'all' %}disabled
+        {% endif %}>
+        Все
+        </button>
+    </a>
+
+    <a href="?status=favorite">
+        <button class="btn btn-viol"
+        {% if status == 'favorite' %}disabled
+        {% endif %}>
+            Избранное
+        </button>
+    </a>
+
+    <a href="?status=viewed">
+        <button class="btn btn-viol" 
+        {% if status == 'viewed' %}disabled
+        {% endif %}>
+            Просмотрено
+        </button>
+    </a>
+
+    <a href="?status=disliked">
+        <button class="btn btn-viol"
+        {% if status == 'disliked' %}disabled
+        {% endif %}>
+            Не понравилось
+        </button>
+    </a>
+
+</div>
+
 
 {% for i in recommendations %}
 
-<div>
-    <h4>{{ i.recommendation.get_type_rec_display }}</h4>
+<div class="row justify-content-center mb-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm recommendation-card">
+            <div class="row align-items-center">
+                
 
-    <img
-    src="{% static i.recommendation.image_rec %}"
-    alt="{{ i.recommendation.title }}"
-    width="100"
-    >
-<h4> {{ i.recommendation.title }}</h4>
-<p> {{ i.recommendation.description }}</p>
-<hr>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h6 class="text-muted" >{{ i.recommendation.get_type_rec_display }}</h6>
+                        <h5> {{ i.recommendation.title }}</h5>
+                        <p> {{ i.recommendation.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+
+
 {% empty %}
-<p>Пока ничего нет</p>
+<div class="alert alert-info text-center">
+    <p>Пока ничего нет</p>
+</div>
 {% endfor %}
 {% endblock %}

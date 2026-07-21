@@ -2,42 +2,63 @@
 {% block title %}Дневник{% endblock %}
 {% block content %}
 
-    <h2>Мой дневник воспоминаний</h2>
+<h3 class="text-center mb-5">Мой дневник воспоминаний</h3>
 
-    <form method = 'GET'>
-        <label>Выбери дату:</label>
+<div class="card date-card shadow-sm p-3 mb-5">
+    <form method = 'GET' class="row g-2 align-items-center">
+        
+        <div class="col-md-4">
+            <label class="form-label">Выбери дату:</label>
+            <input type="date" class="form-control" name="date">
+        </div>
+        
+        <div class="col-auto mt-4">
+            <button class="btn btn-grey">Найти</button>
+        </div>
 
-        <input type="date" name="date">
-
-        <button type="submit">Найти</button>
-
+        <div class="col-auto mt-4">
+            <a href="{% url 'create_diary'%}" class="btn btn-viol">Новая запись</a>
+        </div>
     </form>
 
-    <a href="{% url 'create_diary' %}">Новая запись</a>
+</div> 
     
-    
+    <div class="row">
     {% for i in diaries %}
 
-    <div>
-        <p>{{ i.date_created }}</p>
-        <p>{{ i.text }}</p>
+    <div class="col-md-6 mb-4">
+        <div class="card diary-card shadow-sm h-100">
+            <div class="card-body">
+                <p class="card-text mb-1">{{ i.text }}</p>
+                {% if i.image_user %}
+                    <img src="{{ i.image_user.url}}" class="diary-image ">
+                {% endif %}
 
-        {% if i.image_user %}
-            <img src="{{ i.image_user.url}}" width='300'>
-        {% endif %}
+        
+            <p class="text-muted">{{ i.date_created }}</p>
+            
 
-        <a href="{% url 'edit_diary' i.id %}">Редактировать</a>
+            <div class="d-flex gap-2 mt-4">
+                <a href="{% url 'edit_diary' i.id %}"
+                    class="btn btn-up">
+                    Редактировать
+                </a>
+
+                <form method="POST" action="{% url 'delete_diary' i.id%}">
+                    {% csrf_token %}
+                    <button class="btn btn-del">Удалить</button>
+                </form>
+            </div>
         
-        <form method="POST" action="{% url 'delete_diary' i.id%}">
-            {% csrf_token %}
-            <button type="submit">Удалить</button>
-        </form>
-        
+        </div>
     </div>
-
+</div>
     {% empty %}
-
+<div class="alert alert-info text-center">
     <p>Пока ничего нет</p>
+</div>
+    
 
     {% endfor %}
+</div>
 {% endblock %}

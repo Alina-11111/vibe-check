@@ -2,12 +2,26 @@
 {% block title %}Запись в дневник{% endblock %}
 {% block content %}
 
-    <h2>Новая запись</h2>
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <h3 class="text-center mb-2">Новая запись</h3>
+            
+                <form method = 'POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="col-auto mt-4">
+                    <button class="btn-up">Сохранить</button>
+                
+                </div>
+                </form>
 
-    <form method = 'POST' enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
+            </div>
 
-    <button type="submit">Сохранить</button>
-    </form>
+        </div>
+
+    </div>
+</div>
+    
 {% endblock %}

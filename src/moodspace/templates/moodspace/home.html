@@ -1,19 +1,28 @@
 {% extends 'moodspace/base.html' %}
 
 {% block title %}Главная{% endblock %}
-
 {% block content %}
-    <h1>Добро пожаловать!</h1>
-    <p>Это пространство, где вы можете фиксировать свое настроение и получать персональные рекомендации.</p>
+
+<div class="d-flex flex-column justify-content-center align-items-center"
+    style="min-height: 80vh;"> 
+
+<div>
     
-    <h3>Навигация по сайту:</h3>
-    <ul>
-        <li><a href="{% url 'register' %}">Регистрация</a></li>
-        <li><a href="{% url 'login' %}">Вход в аккаунт</a></li>
-        
-       {% comment %} 
-        <li><a href="{% url 'create_diary' %}">Мой дневник (Написать запись)</a></li>
-        <li><a href="#">Рекомендации (в разработке)</a></li>
-        {% endcomment %}
-    </ul>
+    <p class="lead mt-1 text-center">Здесь ты можешь получить рекомендации под своё настроение</p>
+    <p class="col-lg-7 mx-auto text-center">
+        Выбери какое у тебя сейчас настроение и получи подборку
+        фильмов, сериалов, книг и игр. Веди дневник воспоминаний, чтобы помнить, 
+        какие чувства ты испытовал(-а) в важные моменты своей жизни
+    </p>
+    <div class="mt-4 d-flex justify-content-center gap-3">
+        <a href="{% url 'recommendations' %}" class="btn btn-viol me-3">
+            Получить рекомендации
+        </a>
+        <a href="{% url 'create_diary' %}" class="btn btn-up">
+            Добавить запись в дневник
+        </a>
+
+    </div>
+</div>
+</div>
 {% endblock %}

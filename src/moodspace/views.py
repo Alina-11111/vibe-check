@@ -4,6 +4,10 @@ from .forms import PersonForm, DiaryForm
 from .models import Diary, Vibe, Recommendation, RecommendUser, MoodEntry
 from random import choice
 from django.db.models import Count
+from rest_framework.generics import ListAPIView
+from .serializers import RecommendationSerializer
+
+
 
 def home(request):
     return render (request, 'moodspace/home.html')
@@ -167,3 +171,7 @@ def profile(request):
 
 
     return render(request, 'moodspace/profile.html', {'recommendations': recommendations, 'statistic':statistic, 'status': status, 'diary_count': diary_count})
+
+class ReccomendationApi(ListAPIView):
+    queryset = Recommendation.objects.all()
+    serializer_class = RecommendationSerializer

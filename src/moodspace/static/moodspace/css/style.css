@@ -1,0 +1,145 @@
+body{
+    background-color:#e2def1;
+}
+
+
+.diary-card{
+    background:#f4eff4;
+    
+
+}
+
+.date-card{
+    background: #f4eff4;
+    
+}
+
+.btn-viol{
+    background-color:#764ed4;
+    color:white;
+}
+
+.btn-viol:hover{
+    background-color:#804afc;
+    border-color:#8b5cf6;
+    color:white;
+}
+
+.btn-grey{
+    background-color:#868388;
+    color:white;
+    
+}
+
+.btn-grey:hover{
+    background-color:#69676e;
+    border-color:#8b5cf6;
+    color:white;
+}
+
+
+.btn-up{
+    border-color:#764ed4;
+    color:#764ed4;
+}
+
+
+.btn-up:hover{
+    background-color:#5f45a1;
+    border-color:#8b5cf6;
+    color:white;
+}
+
+.btn-del{
+    border-color:#e97793;
+    color:#cc5875;
+}
+
+.btn-del:hover{
+    background-color:#fd3164;
+    border-color:#f76e90;
+    color:white;
+}
+
+.diary-image{
+    max-width:100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius:12px;
+}
+
+.card{
+    
+    border:1px solid #d9c1f2;
+    border-radius:20px;
+}
+
+.catd-text{
+    white-space: pre-line;
+}
+
+.btn{
+    border-radius:10px;
+}
+
+
+.mood-image{
+    width: 110px;
+    max-height: 120px;
+    object-fit: contain;
+    border-radius:13px;
+    display: block;
+    margin: 0 auto;
+    
+}
+
+
+.mood-card{
+    background: #f4eff4;
+    border-radius:20px;
+    transition: 0.2s;
+
+    
+}
+
+
+.image-rec{
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 11px;
+}
+
+.card-text{
+    flex-grow:1;
+}
+
+.recommendation-card{
+    background: #f4eff4;
+}
+
+.profile-card{
+    border-radius: 20px;
+    background-color: #f4eff4;
+}
+
+.cat-icon{
+    position: fixed;
+    right:5px;
+    top: 35px;
+    width: 138px;
+    opacity: .9
+
+}
+
+.cat-icon2{
+    position: fixed;
+    left:-5px;
+    bottom: 25px;
+    width: 90px;
+    opacity: .9
+
+}
+

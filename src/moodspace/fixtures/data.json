@@ -1,0 +1,105 @@
+[
+{
+    "model": "moodspace.vibe",
+    "pk": 1,
+    "fields": {
+        "vibe_name": "Поплакать",
+        "image_vibe": "moodspace/images/vibe/cry.webp"
+    }
+},
+{
+    "model": "moodspace.vibe",
+    "pk": 2,
+    "fields": {
+        "vibe_name": "Повеселиться",
+        "image_vibe": "moodspace/images/vibe/fun.webp"
+    }
+},
+{
+    "model": "moodspace.vibe",
+    "pk": 3,
+    "fields": {
+        "vibe_name": "Романтичное",
+        "image_vibe": "moodspace/images/vibe/cute.webp"
+    }
+},
+{
+    "model": "moodspace.vibe",
+    "pk": 4,
+    "fields": {
+        "vibe_name": "Вдохновиться",
+        "image_vibe": "moodspace/images/vibe/motivation.webp"
+    }
+},
+{
+    "model": "moodspace.vibe",
+    "pk": 5,
+    "fields": {
+        "vibe_name": "Не знаю",
+        "image_vibe": "moodspace/images/vibe/unknow.webp"
+    }
+},
+{
+    "model": "moodspace.vibe",
+    "pk": 6,
+    "fields": {
+        "vibe_name": "Мрачное",
+        "image_vibe": "moodspace/images/vibe/horror.webp"
+    }
+},
+{
+    "model": "moodspace.recommendation",
+    "pk": 1,
+    "fields": {
+        "type_rec": "movie",
+        "title": "Хатико: Самый верный друг (2008)",
+        "description": "Преданный пес каждый день встречает хозяина на вокзале, что бы ни случилось. История, которая потрясла мир",
+        "image_rec": "moodspace/images/recommendation/Hachi.webp",
+        "vibe": 1
+    }
+},
+{
+    "model": "moodspace.recommendation",
+    "pk": 2,
+    "fields": {
+        "type_rec": "series",
+        "title": "Оставленные (2014)",
+        "description": "Необъяснимое исчезновение 2% населения Земли заставляет всех оставшихся глубоко задуматься о вере, душе, справедливости и смысле собственного существования.",
+        "image_rec": "moodspace/images/recommendation/leftovers.jpg",
+        "vibe": 1
+    }
+},
+{
+    "model": "moodspace.recommendation",
+    "pk": 3,
+    "fields": {
+        "type_rec": "book",
+        "title": "\"Белый Бим Черное Ухо\" Гавриил Троепольский",
+        "description": "Книга рассказывает о судьбе верной и умной собаки – белого шотландского сеттера Бима, преданного своему хозяину, пенсионеру-охотнику Ивану Ивановичу. Когда хозяин попадает в больницу, пса берет к себе соседка. Но Бим убегает из квартиры и начинает скитаться по городу в поисках Ивана Ивановича. Он встречает многих людей и терпит разное обращение, однако продолжает верить в человеческую доброту и надеяться на лучшее.",
+        "image_rec": "moodspace/images/recommendation/whiteBim.jpg",
+        "vibe": 1
+    }
+},
+{
+    "model": "moodspace.recommendation",
+    "pk": 4,
+    "fields": {
+        "type_rec": "game",
+        "title": "Gone Home (2013)",
+        "description": "7 июня 1995 года. 01:15\r\n\r\nВы провели за границей целый год, и теперь возвращаетесь домой. Вы предвкушаете встречу с семьей, но дома никого нет! Что-то здесь не так. Куда все делись? Что здесь произошло?",
+        "image_rec": "moodspace/images/recommendation/gone_home.png",
+        "vibe": 1
+    }
+},
+{
+    "model": "moodspace.recommendation",
+    "pk": 5,
+    "fields": {
+        "type_rec": "movie",
+        "title": "Интерстеллар (2014)",
+        "description": "Когда засуха, пыльные бури и вымирание растений приводят человечество к продовольственному кризису, коллектив исследователей и учёных отправляется сквозь червоточину (которая предположительно соединяет области пространства-времени через большое расстояние) в путешествие, чтобы превзойти прежние ограничения для космических путешествий человека и найти планету с подходящими для человечества условиями.",
+        "image_rec": "moodspace/images/recommendation/Interstellar.jpg",
+        "vibe": 1
+    }
+}
+]

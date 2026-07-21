@@ -4,46 +4,68 @@
 {% block title %}Рекомендации{% endblock %}
 {% block content %}
 
-    <h2>Вот</h2>
 
-<div> 
+<h4 class="text-center mb-4">Вот твоя подборка</h4>
 
-    <form method="GET" action="{% url 'vibe_rec' vibe.id %}">
-        <button type="submit">Другая подборка</button>
-    </form>
+
+<div class="row justify-content-center">
     {% for i in cards %}
+    <div class="col-lg-8 mb-4">
+        <div class="card shadow-sm recommendation-card">
+            <div class="card-body">
+                    
+                    <div class="row align-items-center">
+                        <div class="col-md-4 text-center">
+                            <h4 class=" mb-2">{{ i.get_type_rec_display }}</h4>
+                     <img
+                        src="{% static i.image_rec %}"
+                        class="mx-auto image-rec"
+                        alt="{{ i.title }}">
+                </div>
 
-    <h3>{{ i.get_type_rec_display }}</h3>
-
-    <img
-            src="{% static i.image_rec %}"
-            alt="{{ i.title }}"
-            width="100"
-        >
-
-    <h4>{{ i.title }}</h4>
-
-    <p>{{ i.description }}</p>
-    <form method="POST" action="{% url 'add_status' i.id 'favorite' %}">
-         {% csrf_token %}
-        <button type="submit"> Избранное</button>
-    </form>
+                <div class="col-md-8 d-flex flex-column">
     
-    <form method="POST" action="{% url 'add_status' i.id 'viewed' %}">
-         {% csrf_token %}
-        <button> Просмотрено</button>
-    </form>
+                        <h5>{{ i.title }}</h5>
+                        <p class="card-text ">{{ i.description }}</p>
+                        
+                        
+                        <div class="d-flex gap-2 flex-wrap">
+                            <form method="POST" action="{% url 'add_status' i.id 'favorite' %}">
+                                {% csrf_token %}
+                                <button class="btn btn-viol mb-2"> Избранное</button>
+                            </form>
 
-    <form method="POST" action="{% url 'add_status' i.id 'disliked' %}">
-         {% csrf_token %}
-        <button> Не понравилось</button>
-    </form>
-    
+                            <form method="POST" action="{% url 'add_status' i.id 'viewed' %}">
+                                {% csrf_token %}
+                                <button class="btn btn-viol mb-2"> Просмотрено</button>
+                            </form>
+
+                            <form method="POST" action="{% url 'add_status' i.id 'disliked' %}">
+                                {% csrf_token %}
+                                <button class="btn btn-viol"> Не понравилось</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 </div>
 
-    {% empty %}
+  
+{% empty %}
+<div class="alert alert-info text-center">
     <p>Пока ничего нет</p>
+</div>
+
 {% endfor %}
+</div>
+<div class="text-center mb-5"> 
 
-
+    <form method="GET" action="{% url 'vibe_rec' vibe.id %}">
+        <button class="btn btn-grey">Другая подборка</button>
+    </form>
+</div>
 {% endblock %}
